@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Layers3, Zap, Download } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -19,6 +19,8 @@ export default function Home() {
     "/products/keychain-2.jpg",
     "/products/keychain-3.jpg",
     "/products/keychain-4.jpg",
+    "/products/keychain-5.jpg",
+    "/products/keychain-6.jpg",
   ];
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/collections">
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-[#E8E8E3] hover:bg-[#E0E0DB] border-border">
                 Browse Gallery
               </Button>
             </Link>
@@ -106,7 +108,8 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselNext className="right-2 h-10 w-10 bg-[#FAF9F6]/90 hover:bg-[#FAF9F6] shadow-md border border-border/50 backdrop-blur-sm" />
+              <CarouselPrevious className="left-2 h-10 w-10 bg-[#E8E8E3]/90 hover:bg-[#E8E8E3] shadow-md border border-border/50 backdrop-blur-sm" />
+              <CarouselNext className="right-2 h-10 w-10 bg-[#E8E8E3]/90 hover:bg-[#E8E8E3] shadow-md border border-border/50 backdrop-blur-sm" />
             </Carousel>
             {/* Slide indicators */}
             {count > 0 && (

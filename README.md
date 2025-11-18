@@ -7,7 +7,7 @@ Convert your 2D images into 3D printable keychains.
 - **Framework:** Next.js 15 (App Router)
 - **Backend:** Convex (serverless, stateful backend)
 - **3D Rendering:** React Three Fiber + Drei
-- **3D Processing:** Three.js, Potrace, Three-CSG-TS, Three-STL-Exporter
+- **3D Processing:** Three.js, Potrace, Jimp (image preprocessing), STLExporter
 - **Styling:** Tailwind CSS + shadcn/ui
 - **Language:** TypeScript
 
@@ -66,6 +66,7 @@ keychan-studio/
 ├── app/                    # Next.js App Router pages
 │   ├── layout.tsx         # Root layout with Convex provider
 │   ├── page.tsx           # Home page
+│   ├── generate/          # Generate 3D keychain page
 │   ├── collections/       # Collections page
 │   └── pricing/           # Pricing page
 ├── components/            # React components
@@ -104,10 +105,11 @@ All backend logic is handled by Convex:
 
 1. **Image Upload**: Upload 2D images (PNG, JPG) via Convex storage
 2. **3D Conversion**: Convert images to 3D STL files using:
-   - Potrace for bitmap tracing
+   - Jimp for image preprocessing (transparency detection, grayscale conversion)
+   - Potrace for bitmap-to-SVG tracing
    - Three.js ExtrudeGeometry for 3D extrusion
-   - Three-CSG-TS for boolean operations (keychain hole)
-3. **Customization**: Adjust thickness, text, hole position
+   - Manual geometry manipulation for keychain hole creation
+3. **Customization**: Adjust thickness, text, hole position, and image placement
 4. **3D Preview**: Real-time preview using React Three Fiber
 5. **Collections**: Browse and download community keychains
 

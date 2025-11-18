@@ -20,12 +20,12 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#FAF9F6] border-b border-border shadow-sm">
+    <nav className="bg-[#E8E8E3] border-b border-border shadow-sm">
       <div className="container mx-auto px-6">
         <div className="flex items-center h-16 relative">
           {/* Logo - Left */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="relative w-10 h-10 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors overflow-hidden flex items-center justify-center">
+            <div className="relative w-10 h-10 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-200 overflow-hidden flex items-center justify-center shadow-sm group-hover:shadow-md">
               {!logoError ? (
                 <img
                   src="/logo.png"
@@ -46,13 +46,16 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 href={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-medium transition-all duration-200 hover:text-primary relative ${
                   isActive(link.path)
                     ? "text-primary"
                     : "text-muted-foreground"
                 }`}
               >
                 {link.name}
+                {isActive(link.path) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full shadow-sm" />
+                )}
               </Link>
             ))}
           </div>
@@ -62,7 +65,7 @@ export const Navbar = () => {
             <Button 
               variant="outline" 
               size="icon" 
-              className="border-primary text-primary hover:bg-primary hover:text-white rounded-full"
+              className="border-primary text-primary hover:bg-primary hover:text-white rounded-full shadow-sm hover:shadow-md transition-all duration-200"
             >
               <User className="w-5 h-5" />
             </Button>
